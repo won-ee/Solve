@@ -1,7 +1,7 @@
 from collections import deque
 
 def solution(maps):
-    sty,syx,edy,edx,lx,ly=0,0,0,0,0,0
+    sty,stx,edy,edx,lx,ly=0,0,0,0,0,0
     len_y,len_x= len(maps),len(maps[0])
     for i in range(len_y):
         for j in range(len_x):
@@ -25,6 +25,7 @@ def bfs(ny,nx,ey,ex,count,arr,real_edy,real_edx):
     q = deque()
     q.append((ny,nx,count))
     used[ny][nx] = 1
+    
     while q:
         y,x,cnt = q.popleft()
 
@@ -32,7 +33,7 @@ def bfs(ny,nx,ey,ex,count,arr,real_edy,real_edx):
             if y != real_edy or x !=  real_edx:
                 ret = bfs(y,x,real_edy,real_edx,cnt,arr,real_edy,real_edx)
                 return ret
-            elif y == real_edy and x == real_edx:
+            else:
                 return cnt
                 
         for i in range(4):
